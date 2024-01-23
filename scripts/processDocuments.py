@@ -25,22 +25,11 @@ def process_document(roleArn, bucket, document, region_name):
     #analyzer.CreateTopicandQueue()
     logger.info("Extracting Text")
     extracted_text = analyzer.ProcessDocument()
-    #logger.info("Deleting Topic and Queue")
+    logger.info("Extracted Text: {}".format(extracted_text))
     #analyzer.DeleteTopicandQueue()
     
     logger.info("Lines in detected text:" + str(len(extracted_text)))
-    sliced_list = []
-    start = 0
-    end = 24
-    while end < len(extracted_text):
-        sliced_list.append(extracted_text[start:end])
-        start += 25
-        end += 25
-    logger.info(sliced_list)
     
-    # List comprehension to flatten multiple lists into a single list
-    extracted_text = [line for sublist in sliced_list for line in sublist]
-    logger.info(extracted_text)
     # change document name
     analysis_results = str(document.replace("pdf","txt"))
     logger.info("document name: {}".format(analysis_results))
@@ -60,9 +49,6 @@ def lambda_handler(event, lambda_context):
     roleArn = 'arn:aws:iam::013987100154:role/textractTest'
     region_name = 'us-east-1'
     bucket_name = 'bucket-textract-test007'
-
-    # initialize global corpus
-    full_corpus = []
 
     # to hold all docs in bucket
     docs_list = []
@@ -86,6 +72,3 @@ def lambda_handler(event, lambda_context):
     
     # delete sns and sqs
     delete_sns_sqs(analyzer)
-
-    # print the global corpus
-    print(full_corpus)
