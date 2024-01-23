@@ -2,7 +2,7 @@
 
 Extracting text with AWS Textract from PDF files.
 
-This solution was inspired on the AWS document processing solution tutorial and was adapted to my use case ![here](https://docs.aws.amazon.com/textract/latest/dg/textract-to-comprehend.html)
+This solution was inspired on the AWS document processing solution tutorial and was adapted to my use case [here](https://docs.aws.amazon.com/textract/latest/dg/textract-to-comprehend.html)
 
 Use Case: 
 
