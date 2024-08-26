@@ -144,7 +144,8 @@ class DocumentProcessor():
         maxResults = 1000
         paginationToken = None
         finished = False
-        
+        detected_text = []
+
         while finished == False:
             response = None
             if paginationToken == None:
@@ -157,7 +158,7 @@ class DocumentProcessor():
             blocks = response['Blocks']
             
             # List to hold detected text
-            detected_text = []
+            #detected_text = []
             
             # Display block information and add detected text to list
             for block in blocks:
@@ -169,4 +170,5 @@ class DocumentProcessor():
             else:
                 finished = True
             
-            return detected_text
+            #return detected_text
+        return detected_text
